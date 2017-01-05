@@ -73,7 +73,13 @@ class PPREController extends Controller
      */
     public function show($id)
     {
-      if($ppre = PPRE::with('ppred')->where('PPRE_DateTime', $id)->first()){
+      if($ppre = PPRE::where('PPRE_DateTime', $id)->with('ppred')->first()){
+        //get the record from mrmart then assign it to json array
+        foreach ($ppre->ppred as $ppred) {
+            $item = $ppred->article();
+            $ppred->PPRED_ARTICLENAME = $item->MRMART_ARTICLENAME;
+        }
+
        return response()->json(array(
         'error' => false,
         'PPRE_DateTime' => $ppre->PPRE_DateTime,
