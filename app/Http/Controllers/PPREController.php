@@ -97,7 +97,15 @@ class PPREController extends Controller
     }
 
     public function user($id){
-      if($ppre = PPRE::where('PPRE_USER', $id)->withCount('ppred')->get()){
+      if($ppre = PPRE::where('PPRE_USER', $id)->with('ppred')->get()){
+          //get the record from mrmart then assign it to json array
+        foreach ($ppre as $ppreitem) {
+            foreach($ppreitem->ppred as $ppred){
+                $item = $ppred->article();
+                $ppred->PPRED_ARTICLENAME = $item->MRMART_ARTICLENAME;
+            }
+        }
+
        return response()->json(array(
         'error' => false,
         'entries' => $ppre,
