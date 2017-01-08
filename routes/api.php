@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Satuan; use App\Mfgart; use App\Mrmart; use App\User; use App\PPRE; use App\PPRED;
+use App\Satuan; 
+use App\Mfgart; 
+use App\Mrmart; 
+use App\User; 
+use App\PPRE; 
+use App\PPRED;
+use App\Customer;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -40,7 +46,9 @@ Route::resource('ppre', 'PPREController');
 //get ppre list by user
 Route::get('ppreh/user/{id}', 'PPREController@user');
 
+Route::resource('ssjde', 'SSJDEController');
 
+Route::get('ssjdeh/user/{id}', 'SSJDEController@user');
 
 Route::get('/satuan', function(Request $request){
 	$satuan = Satuan::all();
@@ -70,3 +78,12 @@ Route::get('/mrmart', function(Request $request){
         ));
 });
 
+
+Route::get('/customer', function(Request $request){
+    $cust = Customer::select('MCUSTOMER_CUSTID', 'MCUSTOMER_CUSTNAME')->get();
+    return Response::json(array(
+            'error' => false,
+            'customers' => $cust,
+            'status_code' => 200
+        ));
+});
