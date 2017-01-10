@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mfgart;
 use Illuminate\Database\Eloquent\Model;
 
 class SSJDED extends Model

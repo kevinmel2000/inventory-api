@@ -48,7 +48,7 @@ Route::get('ppreh/user/{id}', 'PPREController@user');
 
 Route::resource('ssjde', 'SSJDEController');
 
-Route::get('ssjdeh/user/{id}', 'SSJDEController@user');
+Route::get('ssjde/user/{id}', 'SSJDEController@user');
 
 Route::get('/satuan', function(Request $request){
 	$satuan = Satuan::all();
@@ -60,7 +60,8 @@ Route::get('/satuan', function(Request $request){
 });
 
 Route::get('/mfgart', function(Request $request){
-	$produk = Mfgart::all();
+	$produk = Mfgart::where('MFGART_AKTIF', '1')
+    ->select('MFGART_GROUPID','MFGART_ARTICLEID','MFGART_ARTICLENAME')->get();
 	return Response::json(array(
             'error' => false,
             'products' => $produk,

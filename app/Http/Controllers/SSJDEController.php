@@ -99,13 +99,18 @@ class SSJDEController extends Controller
     }
 
     public function user($id){
-        if($ssjde = SSJDE::where('SSJDE_USER', $id)->with('ssjded')->orderBy('SSJDE_DateTime', 'desc')->get()){
+        if($ssjde = SSJDE::where('SSJDE_USER', $id)->with('customer')->with('ssjded')->orderBy('SSJDE_DateTime', 'desc')->get()){
               //get the record from mrmart then assign it to json array
             foreach ($ssjde as $ssjdeitem) {
+                $ssjdeitem->SSJDE_CUSTNAME = $ssjdeitem->customer->MCUSTOMER_CUSTNAME;
+                unset($ssjdeitem['customer']);
                 foreach($ssjdeitem->ssjded as $ssjded){
                     $item = $ssjded->article();
-                    $ssjded->SSJDED_ARTICLENAME = $item->MFGART_ARTICLENAME;
+                    if($item != null)
+                    $ssjded->SSJDE_ARTICLENAME = $item->MFGART_ARTICLENAME;
+
                 }
+              
             }
 
            return response()->json(array(
@@ -148,12 +153,12 @@ class SSJDEController extends Controller
         SSJDED::where('SSJDE_DateTime', $id)->delete();
 
         foreach($json['entries'] as $entry){
-            $ssjded = new PPRED;
-            $ssjded->SSJDED_DateTime = $id;
-            $ssjded->SSJDED_GROUP = $entry['SSJDE_GROUP'];
-            $ssjded->SSJDED_ART =  $entry['SSJDE_ART'];
-            $ssjded->SSJDED_QTY =  $entry['SSJDE_QTY'];
-            $ssjded->SSJDED_SATUAN =  $entry['SSJDE_SATUAN'];
+            $ssjded = new SSJDED;
+            $ssjded->SSJDE_DateTime = $id;
+            $ssjded->SSJDE_GROUP = $entry['SSJDE_GROUP'];
+            $ssjded->SSJDE_ART =  $entry['SSJDE_ART'];
+            $ssjded->SSJDE_QTY =  $entry['SSJDE_QTY'];
+            $ssjded->SSJDE_SATUAN =  $entry['SSJDE_SATUAN'];
             $ssjded->save();
         }
         return response()->json(array(
@@ -174,7 +179,7 @@ class SSJDEController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
          if($user = User::where('MSUSERANDRO_TOKEN', $request->input('token'))
                 ->first()){
@@ -182,7 +187,7 @@ class SSJDEController extends Controller
         $ssjde = SSJDE::find($id);
         $ssjde->delete();
 
-        SSJDED::where('SSJDED_DateTime', $id)->delete();
+        SSJDED::where('SSJDE_DateTime', $id)->delete();
        
         return response()->json(array(
             'error' => false,

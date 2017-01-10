@@ -14,8 +14,12 @@ class SSJDE extends Model
         /**
      * Get the comments for the blog post.
      */
-    public function ppred()
+    public function ssjded()
     {
         return $this->hasMany('App\SSJDED', 'SSJDE_DateTime', 'SSJDE_DateTime');
+    }
+
+    public function customer(){
+        return $this->hasOne('App\Customer', 'MCUSTOMER_CUSTID', 'SSJDE_CUSTID');
     }
 }
