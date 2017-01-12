@@ -51,6 +51,7 @@ class PPREController extends Controller
             $ppred->PPRED_ART =  $entry['PPRE_ART'];
             $ppred->PPRED_QTY =  $entry['PPRE_QTY'];
             $ppred->PPRED_SATUAN =  $entry['PPRE_SATUAN'];
+            $ppred->PPRED_NOTE = $entry['PPRE_NOTE'];
             $ppred->save();
         }
         return response()->json(array(
@@ -84,7 +85,6 @@ class PPREController extends Controller
         'error' => false,
         'PPRE_DateTime' => $ppre->PPRE_DateTime,
         'PPRE_USER' => $ppre->PPRE_USER,
-        'PPRE_NOTE' => $ppre->PPRE_NOTE,
         'entries' => $ppre->ppred,
         'status_code' => 200,
         ));
@@ -159,6 +159,7 @@ class PPREController extends Controller
             $ppred->PPRED_ART =  $entry['PPRE_ART'];
             $ppred->PPRED_QTY =  $entry['PPRE_QTY'];
             $ppred->PPRED_SATUAN =  $entry['PPRE_SATUAN'];
+            $ppred->PPRED_NOTE => $entry['PPRE_NOTE'];
             $ppred->save();
         }
         return response()->json(array(

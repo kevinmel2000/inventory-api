@@ -52,6 +52,7 @@ class SSJDEController extends Controller
             $ssjded->SSJDE_ART =  $entry['SSJDE_ART'];
             $ssjded->SSJDE_QTY =  $entry['SSJDE_QTY'];
             $ssjded->SSJDE_SATUAN =  $entry['SSJDE_SATUAN'];
+            $ssjded->SSJDE_NOTE = $entry['SSJDE_NOTE'];
             $ssjded->save();
         }
         return response()->json(array(
@@ -86,7 +87,6 @@ class SSJDEController extends Controller
         'SSJDE_DateTime' => $ssjde->SSJDE_DateTime,
         'SSJDE_USER' => $ssjde->SSJDE_USER,
         'SSJDE_CUSTID' => $ssjde->SSJDE_CUSTID,
-        'SSJDE_NOTE' => $ssjde->SSJDE_NOTE,
         'entries' => $ssjde->ssjded,
         'status_code' => 200,
         ));
@@ -159,6 +159,7 @@ class SSJDEController extends Controller
             $ssjded->SSJDE_ART =  $entry['SSJDE_ART'];
             $ssjded->SSJDE_QTY =  $entry['SSJDE_QTY'];
             $ssjded->SSJDE_SATUAN =  $entry['SSJDE_SATUAN'];
+            $ssjded->SSJDE_NOTE = $entry['SSJDE_NOTE'];
             $ssjded->save();
         }
         return response()->json(array(
