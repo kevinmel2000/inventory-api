@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2017 at 03:06 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: Jan 13, 2017 at 04:32 PM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -1877,7 +1877,7 @@ CREATE TABLE `msuserandro` (
 --
 
 INSERT INTO `msuserandro` (`MSUSERANDRO_ID`, `MSUSERANDRO_PASSWORD`, `MSUSERANDRO_ROLE`, `MSUSERANDRO_TOKEN`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'TdEDpzSSopmlqjAcRBchKvuOB0qDWC7M');
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'ZOHGyhaikCCHTLLijs8OUzDnYrBzXgm4');
 
 -- --------------------------------------------------------
 
@@ -1890,26 +1890,27 @@ CREATE TABLE `ppred` (
   `PPRED_GROUP` varchar(25) NOT NULL,
   `PPRED_ART` varchar(25) NOT NULL,
   `PPRED_QTY` int(11) NOT NULL,
-  `PPRED_SATUAN` varchar(25) NOT NULL
+  `PPRED_SATUAN` varchar(25) NOT NULL,
+  `PPRED_NOTE` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ppred`
 --
 
-INSERT INTO `ppred` (`PPRE_DateTime`, `PPRED_GROUP`, `PPRED_ART`, `PPRED_QTY`, `PPRED_SATUAN`) VALUES
-('20170104-220830', 'SPART', 'GEAR004', 12, 'BTG'),
-('20170104-220830', 'MISC', 'GAGE002', 1, 'JAM'),
-('20170107-220603', 'AS', 'AS35C022', 2, 'JAM'),
-('20170106-235001', 'AS', 'AS35C025', 1, 'BTG'),
-('20170106-235001', 'JASA', 'S001', 2, 'KG'),
-('20170107-220737', 'AS', 'AS35C025', 1, 'BTG'),
-('20170107-220737', 'DIES', 'G002', 2, 'KG'),
-('20170108-193754', 'ATK', 'PRINTER001', 2, 'BTG'),
-('20170108-193754', 'ATK', 'AMPLOP003', 2, 'BTG'),
-('20170108-203110', 'FORG', 'NR001', 22, 'BTG'),
-('20170108-203116', 'DIES', 'G003', 2, 'BTG'),
-('20170108-204356', 'SPART', 'GEAR003', 12, 'BTG');
+INSERT INTO `ppred` (`PPRE_DateTime`, `PPRED_GROUP`, `PPRED_ART`, `PPRED_QTY`, `PPRED_SATUAN`, `PPRED_NOTE`) VALUES
+('20170104-220830', 'SPART', 'GEAR004', 12, 'BTG', NULL),
+('20170104-220830', 'MISC', 'GAGE002', 1, 'JAM', NULL),
+('20170107-220603', 'AS', 'AS35C022', 2, 'JAM', NULL),
+('20170106-235001', 'AS', 'AS35C025', 1, 'BTG', NULL),
+('20170106-235001', 'JASA', 'S001', 2, 'KG', NULL),
+('20170107-220737', 'AS', 'AS35C025', 1, 'BTG', NULL),
+('20170107-220737', 'DIES', 'G002', 2, 'KG', NULL),
+('20170108-193754', 'ATK', 'PRINTER001', 2, 'BTG', NULL),
+('20170108-193754', 'ATK', 'AMPLOP003', 2, 'BTG', NULL),
+('20170108-203110', 'FORG', 'NR001', 22, 'BTG', NULL),
+('20170108-203116', 'DIES', 'G003', 2, 'BTG', NULL),
+('20170108-204356', 'SPART', 'GEAR003', 12, 'BTG', NULL);
 
 -- --------------------------------------------------------
 
@@ -1919,23 +1920,22 @@ INSERT INTO `ppred` (`PPRE_DateTime`, `PPRED_GROUP`, `PPRED_ART`, `PPRED_QTY`, `
 
 CREATE TABLE `ppreh` (
   `PPRE_DateTime` varchar(25) NOT NULL DEFAULT '-',
-  `PPRE_USER` varchar(25) NOT NULL DEFAULT '-',
-  `PPRE_NOTE` varchar(250) NOT NULL DEFAULT '-'
+  `PPRE_USER` varchar(25) NOT NULL DEFAULT '-'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ppreh`
 --
 
-INSERT INTO `ppreh` (`PPRE_DateTime`, `PPRE_USER`, `PPRE_NOTE`) VALUES
-('20170104-220830', 'admin', '-'),
-('20170106-235001', 'admin', '-'),
-('20170107-220603', 'admin', '-'),
-('20170107-220737', 'admin', '-'),
-('20170108-193754', 'admin', '-'),
-('20170108-203110', 'admin', '-'),
-('20170108-203116', 'admin', '-'),
-('20170108-204356', 'admin', '-');
+INSERT INTO `ppreh` (`PPRE_DateTime`, `PPRE_USER`) VALUES
+('20170104-220830', 'admin'),
+('20170106-235001', 'admin'),
+('20170107-220603', 'admin'),
+('20170107-220737', 'admin'),
+('20170108-193754', 'admin'),
+('20170108-203110', 'admin'),
+('20170108-203116', 'admin'),
+('20170108-204356', 'admin');
 
 -- --------------------------------------------------------
 
@@ -1948,8 +1948,18 @@ CREATE TABLE `ssjded` (
   `SSJDE_GROUP` varchar(25) NOT NULL DEFAULT '-',
   `SSJDE_ART` varchar(25) NOT NULL DEFAULT '-',
   `SSJDE_QTY` varchar(25) NOT NULL DEFAULT '0',
-  `SSJDE_SATUAN` varchar(25) NOT NULL DEFAULT '-'
+  `SSJDE_SATUAN` varchar(25) NOT NULL DEFAULT '-',
+  `SSJDE_NOTE` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ssjded`
+--
+
+INSERT INTO `ssjded` (`SSJDE_DateTime`, `SSJDE_GROUP`, `SSJDE_ART`, `SSJDE_QTY`, `SSJDE_SATUAN`, `SSJDE_NOTE`) VALUES
+('20170113-161113', '1KYZ', 'HOOK', '2', 'BTG', 'note edit'),
+('20170113-161113', '1N101', 'BOSSM12', '3', 'BTG', 'dit 2'),
+('20170113-161113', '1K03S', 'BRKTLB', '2', 'BTG', 'edit3');
 
 -- --------------------------------------------------------
 
@@ -1960,9 +1970,15 @@ CREATE TABLE `ssjded` (
 CREATE TABLE `ssjdeh` (
   `SSJDE_DateTime` varchar(25) NOT NULL DEFAULT '-',
   `SSJDE_CUSTID` varchar(25) NOT NULL DEFAULT '-',
-  `SSJDE_NOTE` varchar(250) NOT NULL DEFAULT '-',
   `SSJDE_USER` varchar(25) NOT NULL DEFAULT '-'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ssjdeh`
+--
+
+INSERT INTO `ssjdeh` (`SSJDE_DateTime`, `SSJDE_CUSTID`, `SSJDE_USER`) VALUES
+('20170113-161113', 'G004', 'admin');
 
 --
 -- Indexes for dumped tables
