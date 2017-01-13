@@ -106,6 +106,7 @@ class SSJDEController extends Controller
                 unset($ssjdeitem['customer']);
                 foreach($ssjdeitem->ssjded as $ssjded){
                     $item = $ssjded->article();
+                     $ssjded->SSJDE_ARTICLENAME = "";
                     if($item != null)
                     $ssjded->SSJDE_ARTICLENAME = $item->MFGART_ARTICLENAME;
 

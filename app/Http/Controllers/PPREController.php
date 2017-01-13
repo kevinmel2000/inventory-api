@@ -159,7 +159,7 @@ class PPREController extends Controller
             $ppred->PPRED_ART =  $entry['PPRE_ART'];
             $ppred->PPRED_QTY =  $entry['PPRE_QTY'];
             $ppred->PPRED_SATUAN =  $entry['PPRE_SATUAN'];
-            $ppred->PPRED_NOTE => $entry['PPRE_NOTE'];
+            $ppred->PPRED_NOTE = $entry['PPRE_NOTE'];
             $ppred->save();
         }
         return response()->json(array(
