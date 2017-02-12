@@ -59,6 +59,7 @@ Route::get('/satuan', function(Request $request){
         ));
 });
 
+
 Route::get('/mfgart', function(Request $request){
 	$produk = Mfgart::where('MFGART_AKTIF', '1')
     ->select('MFGART_GROUPID','MFGART_ARTICLEID','MFGART_ARTICLENAME')->get();

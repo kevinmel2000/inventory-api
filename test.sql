@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2017 at 04:32 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.17
+-- Generation Time: Jan 13, 2017 at 05:27 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -1877,7 +1877,8 @@ CREATE TABLE `msuserandro` (
 --
 
 INSERT INTO `msuserandro` (`MSUSERANDRO_ID`, `MSUSERANDRO_PASSWORD`, `MSUSERANDRO_ROLE`, `MSUSERANDRO_TOKEN`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'ZOHGyhaikCCHTLLijs8OUzDnYrBzXgm4');
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '7iyypEJmjFNLFT5bhhG0A0msiq8si1ux'),
+('user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', 'ldzWsFuVI5616SyF7nmCjBbwiXCEhEkS');
 
 -- --------------------------------------------------------
 
@@ -1904,13 +1905,12 @@ INSERT INTO `ppred` (`PPRE_DateTime`, `PPRED_GROUP`, `PPRED_ART`, `PPRED_QTY`, `
 ('20170107-220603', 'AS', 'AS35C022', 2, 'JAM', NULL),
 ('20170106-235001', 'AS', 'AS35C025', 1, 'BTG', NULL),
 ('20170106-235001', 'JASA', 'S001', 2, 'KG', NULL),
-('20170107-220737', 'AS', 'AS35C025', 1, 'BTG', NULL),
-('20170107-220737', 'DIES', 'G002', 2, 'KG', NULL),
 ('20170108-193754', 'ATK', 'PRINTER001', 2, 'BTG', NULL),
 ('20170108-193754', 'ATK', 'AMPLOP003', 2, 'BTG', NULL),
 ('20170108-203110', 'FORG', 'NR001', 22, 'BTG', NULL),
-('20170108-203116', 'DIES', 'G003', 2, 'BTG', NULL),
-('20170108-204356', 'SPART', 'GEAR003', 12, 'BTG', NULL);
+('20170113-221157', 'SPART', 'LISTRIK018', 2, 'BTG', 'edit catetan'),
+('20170113-221157', 'UTANG', 'SALDOHUTANG', 2, 'BTG', 'catet 2'),
+('20170108-204356', 'SPART', 'GEAR003', 12, 'BTG', 'nullulu');
 
 -- --------------------------------------------------------
 
@@ -1931,11 +1931,10 @@ INSERT INTO `ppreh` (`PPRE_DateTime`, `PPRE_USER`) VALUES
 ('20170104-220830', 'admin'),
 ('20170106-235001', 'admin'),
 ('20170107-220603', 'admin'),
-('20170107-220737', 'admin'),
 ('20170108-193754', 'admin'),
 ('20170108-203110', 'admin'),
-('20170108-203116', 'admin'),
-('20170108-204356', 'admin');
+('20170108-204356', 'admin'),
+('20170113-221157', 'admin');
 
 -- --------------------------------------------------------
 
@@ -1959,7 +1958,11 @@ CREATE TABLE `ssjded` (
 INSERT INTO `ssjded` (`SSJDE_DateTime`, `SSJDE_GROUP`, `SSJDE_ART`, `SSJDE_QTY`, `SSJDE_SATUAN`, `SSJDE_NOTE`) VALUES
 ('20170113-161113', '1KYZ', 'HOOK', '2', 'BTG', 'note edit'),
 ('20170113-161113', '1N101', 'BOSSM12', '3', 'BTG', 'dit 2'),
-('20170113-161113', '1K03S', 'BRKTLB', '2', 'BTG', 'edit3');
+('20170113-161113', '1K03S', 'BRKTLB', '2', 'BTG', 'edit3'),
+('20170113-220010', '1N100', 'COVERFRAME', '2', 'BTG', 'kjuuj'),
+('20170113-220010', '1AJC', 'PLATENUT', '22', 'BTG', 'ctetan plate nut'),
+('20170113-232615', '1N100', 'FLOORBOARDFR', '12', 'BTG', 'ghjjhh'),
+('20170113-232615', '15LW', 'PINPIVOTJMR', '26', 'BTG', 'tghh');
 
 -- --------------------------------------------------------
 
@@ -1978,7 +1981,9 @@ CREATE TABLE `ssjdeh` (
 --
 
 INSERT INTO `ssjdeh` (`SSJDE_DateTime`, `SSJDE_CUSTID`, `SSJDE_USER`) VALUES
-('20170113-161113', 'G004', 'admin');
+('20170113-161113', 'G004', 'admin'),
+('20170113-220010', 'B014', 'admin'),
+('20170113-232615', 'M001', 'user');
 
 --
 -- Indexes for dumped tables
